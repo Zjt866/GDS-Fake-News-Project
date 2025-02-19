@@ -10,6 +10,8 @@ Gruppe   : [Andy, Alireza, Mads &amp; Omid](https://absalon.ku.dk/groups/215410)
 ## To Do
 ***Deadline: 24-2-2025***
 
+(ca. 1 Page)
+
 In the first part of the project, you should work on retrieving, structuring, and cleaning data.
 
 You will be using a subset of the FakeNewsCorpus dataset in your project, which is available from Absalon. You can also find more information about the full datasetLinks to an external site. and find information about how the data is collected, the available fields, etc.
