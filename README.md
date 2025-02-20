@@ -10,11 +10,11 @@ Gruppe   : [Andy, Alireza, Mads &amp; Omid](https://absalon.ku.dk/groups/215410)
 ## To Do
 ***Deadline: 24-2-2025***
 
-(ca. 1 Page)
+***(ca. 1 Page)***
 
 In the first part of the project, you should work on retrieving, structuring, and cleaning data.
 
-You will be using a subset of the FakeNewsCorpus dataset in your project, which is available from Absalon. You can also find more information about the full datasetLinks to an external site. and find information about how the data is collected, the available fields, etc.
+You will be using a subset of the FakeNewsCorpus dataset in your project, which is available from Absalon. You can also find more information about the [full dataset](https://github.com/several27/FakeNewsCorpus) and find information about how the data is collected, the available fields, etc.
 
 **Task 1**: Your first task is to retrieve a sample of the [FakeNewsCorpus](https://raw.githubusercontent.com/several27/FakeNewsCorpus/master/news_sample.csv) and structure, process, clean it. You should follow the methodology you developed in Exercise 1. When you have finished cleaning, you can start to process the text. [NLTK](https://www.nltk.org/) has built-in support for many common operations. Try the following:
 
