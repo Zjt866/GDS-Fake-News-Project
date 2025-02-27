@@ -23,7 +23,9 @@ You will be using a subset of the FakeNewsCorpus dataset in your project, which 
 * Remove word variations with stemming and compute the size of the vocabulary. Compute the reduction rate of the vocabulary size after stemming.
 Describe which procedures (and which libraries) you used and why they are appropriate.
 
-**Task 2**: Now try to explore the [995K FakeNewsCorpus subset](https://absalon.ku.dk/courses/80486/files/9275000/download?download_frd=1). Make at least three non-trivial observations/discoveries about the data. These observations could be related to outliers, artefacts, or even better: genuinely interesting patterns in the data that could potentially be used for fake-news detection. Examples of simple observations could be how many missing values there are in particular columns - or what the distribution over domains is. Be creative!
+**Task 3**: Apply your data preprocessing pipeline to the 995,000 rows sampled from the FakeNewsCorpus.
+
+**Task 3**: Now try to explore the [995K FakeNewsCorpus subset](https://absalon.ku.dk/courses/80486/files/9275000/download?download_frd=1). Make at least three non-trivial observations/discoveries about the data. These observations could be related to outliers, artefacts, or even better: genuinely interesting patterns in the data that could potentially be used for fake-news detection. Examples of simple observations could be how many missing values there are in particular columns - or what the distribution over domains is. Be creative!
 
 1. Describe how you ended up representing the FakeNewsCorpus dataset (for instance with a Pandas dataframe). Argue for why you chose this design.
 2. Did you discover any inherent problems with the data while working with it?
@@ -37,8 +39,6 @@ The exploration can include (but need not be limited to):
 4. determining the 100 more frequent words that appear in the content
 5. plot the frequency of the 10000 most frequent words (any interesting patterns?)
 6. run the analysis in point 4 and 5 both before and after removing stopwords and applying stemming: do you see any difference?
-
-**Task 3**: Apply your data preprocessing pipeline to the 995,000 rows sampled from the FakeNewsCorpus.
 
 **Task 4**: Split the resulting dataset into a training, validation, and test splits. A common strategy is to uniformly at random split the data 80% / 10% / 10%. You will use the training data to train your baseline and advanced models, the validation data can be used for model selection and hyperparameter tuning, while the test data should only be used in Part 4.
 
