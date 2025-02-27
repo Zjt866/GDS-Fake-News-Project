@@ -23,7 +23,8 @@ You will be using a subset of the FakeNewsCorpus dataset in your project, which 
 * Remove word variations with stemming and compute the size of the vocabulary. Compute the reduction rate of the vocabulary size after stemming.
 Describe which procedures (and which libraries) you used and why they are appropriate.
 
-**Task 3**: Apply your data preprocessing pipeline to the 995,000 rows sampled from the FakeNewsCorpus.
+**Task 2**: Apply your data preprocessing pipeline to the 995,000 rows sampled from the FakeNewsCorpus.
+  (Datacleaning, Tokenization, Stopword removel, Stemming)
 
 **Task 3**: Now try to explore the [995K FakeNewsCorpus subset](https://absalon.ku.dk/courses/80486/files/9275000/download?download_frd=1). Make at least three non-trivial observations/discoveries about the data. These observations could be related to outliers, artefacts, or even better: genuinely interesting patterns in the data that could potentially be used for fake-news detection. Examples of simple observations could be how many missing values there are in particular columns - or what the distribution over domains is. Be creative!
 
