@@ -31,8 +31,8 @@ DROP_NAN_VALUES = ['content']
 
 ################# USER INITIALIZATION #################
 
-input(f"""
-This cleaning program produces a new file called 'cleaned_dataset.csv' in the same directory as this program, from the file '{UNCLEANED_DATASET_PATH}'.
+print(f"""
+This cleaning program produces a new file called 'cleaned_dataset_MIN.csv' or 'cleaned_dataset_FULL.csv' in the same directory as this program, from the file '{UNCLEANED_DATASET_PATH}'.
 The program assumes that the file is in the same directory as the program.
 
 Rows with missing values in the following columns will be removed before cleaning: {DROP_NAN_VALUES}
@@ -51,13 +51,28 @@ The following cleaning steps will be peformed:
   10)  Removing stopwords
   11)  Stemming
 
-The cleaning process with produces a new csv file with the following columns: {['id']+COLUMNS_TO_BE_CLEANED}.
-The 'id' columns is for merging with the main dataset.
 The cleaned columns will not contain text, but instead a list of tokens.
+  
+The program has two modes: [M]inimal and [F]ull.
+    The Minimal mode will produce a new csv file with the following columns: {['id']+['cleaned '+ c for c in COLUMNS_TO_BE_CLEANED]}.
+    The 'id' columns is for merging with the main dataset.
+    The file name will be: 'cleaned_dataset_MIN.csv'
+
+    The Full mode will produce a new csv file with all the columns in the original csv and the following new columns: {['cleaned '+ c for c in COLUMNS_TO_BE_CLEANED]}.
+    The file name will be: 'cleaned_dataset_FULL.csv'
 
 Make sure that the libraries in 'requirements.txt' are installed.
 This program was made to work with 'Python 3.12'.
+""")
 
+MODE = input("""
+Press [M] to select the Minimal Mode.
+Press [F] to select the Full Mode.
+
+[Press Enter to choose the selected mode]
+""").lower()
+
+input("""
 [Press Enter to begin the cleaning process]
 """)
 
@@ -129,7 +144,11 @@ def CleanText(text:str) -> str :
 
 # Reading file
 print(f"Reading '{UNCLEANED_DATASET_PATH}'...")
-news_corpus = pd.read_csv(UNCLEANED_DATASET_PATH, usecols=(['id']+COLUMNS_TO_BE_CLEANED)).dropna(subset=DROP_NAN_VALUES)
+if MODE == 'm':
+    news_corpus = pd.read_csv(UNCLEANED_DATASET_PATH, usecols=(['id']+COLUMNS_TO_BE_CLEANED)).dropna(subset=DROP_NAN_VALUES)
+else:
+    news_corpus_FULL = pd.read_csv(UNCLEANED_DATASET_PATH).dropna(subset=DROP_NAN_VALUES).drop(columns=['Unnamed: 0'])
+    news_corpus = news_corpus_FULL[['id']+COLUMNS_TO_BE_CLEANED]
 
 ################# PREPARING PARALLIZATION #################
 
@@ -140,16 +159,13 @@ ray.init()
 # initializes a stemmer and defines pipeline
 stemmer = PorterStemmer()
 def preprocessing_pipeline(text:str):
-    return [stemmer.stem(word) for word in CleanText(text).split() if word not in english_stopwords]
-
-done = 0
+    return [stemmer.stem(word, to_lowercase=0) for word in CleanText(text).split() if word not in english_stopwords]
 
 @ray.remote
 def apply_parallel(df_chunk:DataFrame):
-    df_chunk['content'] = df_chunk['content'].apply(preprocessing_pipeline)
-    global done
-    done += 1
-    print(f'Finished cleaning {int(100*done/num_of_chunks)}%...')
+    for column in COLUMNS_TO_BE_CLEANED:
+        df_chunk['cleaned '+column] = df_chunk[column].apply(preprocessing_pipeline)
+    print(f'Finished cleaning +1/{num_of_chunks}...')
     return df_chunk
 
 # splitting the dataset for parallization.
@@ -165,10 +181,14 @@ results = ray.get([apply_parallel.remote(split) for split in csv_parts])
 
 # combining the result
 print('Combining results...')
-news_corpus = pd.concat(results, ignore_index=True)
+news_corpus = pd.concat(results, ignore_index=True).drop(columns=COLUMNS_TO_BE_CLEANED)
 
 print('Writing to file...')
-news_corpus.to_csv('cleaned_dataset.csv', index=False)
+if MODE == 'm':
+    news_corpus.to_csv('cleaned_dataset_MIN.csv', index=False)
+else:
+    news_corpus_FULL = news_corpus_FULL.merge(news_corpus, on='id')
+    news_corpus_FULL.to_csv('cleaned_dataset_FULL.csv', index=False)
 
 print('Done!')
 

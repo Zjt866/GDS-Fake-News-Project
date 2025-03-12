@@ -73,3 +73,13 @@ For the remainder of the project, we will limit ourselves to main-text data only
 
 - Part 5 (Week 13)
 - Submission (Friday 28-3-2025 kl: 16:00, Week 13)
+
+## Files & Task associations
+Denne sektion er for at vi let kan få overblik over hvor henne i vores repository, at løsningerne til de forskellige *Tasks* for hver *Part* findes.
+
+- **Part 1**
+  - Task 1 : [Text Cleaning development.ipynb](https://github.com/Kqr508/GDS-Fake-News-Project/blob/main/Cleaning%20Program/Text%20Cleaning%20development.ipynb)
+  - Task 2 : [Cleaning Program](https://github.com/Kqr508/GDS-Fake-News-Project/tree/main/Cleaning%20Program)
+  - Task 3 : 
+  - Task 4 : 
+- **Part 2**
