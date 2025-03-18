@@ -12,3 +12,7 @@ Advanced Model/glove.6B.100d.txt
 Validation_dataset.csv
 Training_dataset.csv
 Testing_dataset.csv
+/Data
+Advanced Model/Advanced_model.pkl
+Advanced Model/Advanced_selector.pkl
+Advanced Model/Advanced_vectorizer.pkl
