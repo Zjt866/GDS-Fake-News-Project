@@ -29,11 +29,13 @@ COLUMNS_TO_BE_CLEANED = ['content']
 DROP_NAN_VALUES = ['content']
 '''A list of the columns were rows with NaN in these columns, will be removed.'''
 
+CLEANED_FILE_DESTINATION = '../Data/'
+
 ################# USER INITIALIZATION #################
 
 print(f"""
-This cleaning program produces a new file called 'cleaned_dataset_MIN.csv' or 'cleaned_dataset_FULL.csv' in the same directory as this program, from the file '{UNCLEANED_DATASET_PATH}'.
-The program assumes that the file is in the same directory as the program.
+This cleaning program produces a new file called 'cleaned_dataset_MIN.csv' or 'cleaned_dataset_FULL.csv' from the file '{UNCLEANED_DATASET_PATH}'.
+The new file will be put in the following location: '{CLEANED_FILE_DESTINATION}'
 
 Rows with missing values in the following columns will be removed before cleaning: {DROP_NAN_VALUES}
 The following columns will be cleaned: {COLUMNS_TO_BE_CLEANED}
@@ -164,7 +166,7 @@ def preprocessing_pipeline(text:str):
 @ray.remote
 def apply_parallel(df_chunk:DataFrame):
     for column in COLUMNS_TO_BE_CLEANED:
-        df_chunk['cleaned '+column] = df_chunk[column].apply(preprocessing_pipeline)
+        df_chunk['cleaned '+str(column)] = df_chunk[column].apply(preprocessing_pipeline)
     print(f'Finished cleaning +1/{num_of_chunks}...')
     return df_chunk
 
@@ -185,10 +187,10 @@ news_corpus = pd.concat(results, ignore_index=True).drop(columns=COLUMNS_TO_BE_C
 
 print('Writing to file...')
 if MODE == 'm':
-    news_corpus.to_csv('cleaned_dataset_MIN.csv', index=False)
+    news_corpus.to_csv(CLEANED_FILE_DESTINATION+'cleaned_dataset_MIN.csv', index=False)
 else:
     news_corpus_FULL = news_corpus_FULL.merge(news_corpus, on='id')
-    news_corpus_FULL.to_csv('cleaned_dataset_FULL.csv', index=False)
+    news_corpus_FULL.to_csv(CLEANED_FILE_DESTINATION+'cleaned_dataset_FULL.csv', index=False)
 
 print('Done!')
 
