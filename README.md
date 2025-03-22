@@ -7,7 +7,7 @@ Projekt  : [Group Fake News Project](https://absalon.ku.dk/courses/80486/assignm
 
 Gruppe   : [Andy, Alireza, Mads &amp; Omid](https://absalon.ku.dk/groups/215410)
 
-### 10 DAGE TILBAGE
+### 6 DAGE TILBAGE
 
 ## Completed
 - Part 0
