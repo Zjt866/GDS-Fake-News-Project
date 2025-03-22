@@ -20,7 +20,7 @@ except:
 
 ################# PROGRAM SPECIFICATIONS #################
 
-UNCLEANED_DATASET_PATH = '995,000_rows.csv' # Has to be a .csv
+UNCLEANED_DATASET_PATH = '../Data/995,000_rows.csv' # Has to be a .csv
 '''The relative (to the program) or absolute filepath to the csv to be cleaned.'''
 
 COLUMNS_TO_BE_CLEANED = ['content']
