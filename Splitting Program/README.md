@@ -1,3 +1,5 @@
+# Splitting Program
+
 Denne mappe er tilegnet filer der relatere sig [``Splitting program.ipynb``](https://github.com/Kqr508/GDS-Fake-News-Project/blob/main/Splitting%20Program/Splitting%20Development.ipynb). 
 Dette program er lavet til at løse Part 1, Task 4, som går ud på at splitte det pre-processed dataset i et training-, validation- og testing datsæt. Programmet splitter i hhv. 80%, 10% og 10%.
 
