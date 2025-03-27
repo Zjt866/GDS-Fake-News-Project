@@ -1,0 +1,13 @@
+# Miljø og konfiguration
+myenv/
+.vscode/
+*.ipynb_checkpoints/
+
+# Datafiler
+*.csv
+*.csv.zip
+*.pkl
+*.zip
+
+# Backupfiler
+*~
