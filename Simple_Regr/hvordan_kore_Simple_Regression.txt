@@ -1,0 +1,28 @@
+How to Run Simple_Regression?
+Task 1:
+1:
+   - You need to use the cleaned dataset from Part 1.
+   - Make sure the data file is named "cleaned_dataset_FULL.csv"
+   - (or change the line in the notebook to:
+   -  DATA_FILE = "cleaned_dataset_FULL.csv").
+
+2: YOU DO NOT need to run the This part of notebook that generates the vocabulary. 
+  - The titel of this part caled:
+  - "Hvorfor har vi køret det? fordi vi kunne ikke tæller op de orderne. Dvs at rækkerne var strang og vi kunne ikke kunveret den till 
+    metrix."
+ 
+ -(Why haven't I removed it? Because it's proof of where the "vocabulary_10000.csv" file came from.)
+
+
+3: 
+  - You need to have the "vocabulary_10000.csv" file.
+  - It’s available in the Simple_Regr folder on GitHub, inside a ZIP file.
+
+Task 2:
+    - You need to have completed Part 1 and have the file "cleaned_dataset_FULL.csv".
+    - If you run all the cells in this part, it should work just fine.
+
+Task 3:
+    - You need to load "cleaned_bbc_articles_FULL.csv".
+    - This file is also in the Simple_Regr folder on GitHub, inside a ZIP file.
+
